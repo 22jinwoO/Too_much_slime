@@ -9,6 +9,12 @@ public class Warrior : PlayerUnitStats
         maxHp = 500;
         curHp = maxHp;
         atkDmg = 5f;
-        atkSpd = 0.3f;
+        atkSpd = 0.8f;
+        moveSpeed = 100f;
+    }
+
+    private void Awake()
+    {
+        InitData();
     }
 }
