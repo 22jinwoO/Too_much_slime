@@ -17,8 +17,6 @@ public class GreeenSlimeFactory : MonoBehaviour, IMonsterFactory
     {
         MonsterUnitStats MonsterUnit = null;
 
-        print(factory_ObjPool.Monsters);
-        print(factory_ObjPool.Monsters.Count);
         // 스택 요소가 0보다 클 경우
         if (factory_ObjPool.Monsters.Count > 0)
         {
