@@ -205,9 +205,11 @@ GameObject:
   - component: {fileID: 312007659}
   - component: {fileID: 312007658}
   - component: {fileID: 312007663}
+  - component: {fileID: 312007664}
+  - component: {fileID: 312007665}
   m_Layer: 0
   m_Name: PlayerUnit
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,8 +353,36 @@ MonoBehaviour:
   stats: {fileID: 0}
   target: {fileID: 0}
   curAtkSpd: 0
+  attackDamage: 0
   anim: {fileID: 9118659138626304564}
   canAtk: 0
+--- !u!114 &312007664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312007655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d9dd601c6a29b4e9f74f2047b65913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  attacker: {fileID: 0}
+  deadEvent: {fileID: 0}
+--- !u!114 &312007665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312007655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd68f8bfb0b1cac459c61d2b0179eb66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +558,7 @@ GameObject:
   - component: {fileID: 1136658954}
   - component: {fileID: 1136658956}
   - component: {fileID: 1136658958}
+  - component: {fileID: 1136658960}
   - component: {fileID: 1136658957}
   - component: {fileID: 1136658959}
   m_Layer: 0
@@ -623,7 +654,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 7
 --- !u!61 &1136658955
 BoxCollider2D:
@@ -714,6 +745,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd68f8bfb0b1cac459c61d2b0179eb66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1136658960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136658951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6d3d98957abfb4da03cf6605334b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 1136658958}
+  target: {fileID: 0}
+  curAtkSpd: 0
+  attackDamage: 0
+  canAtk: 0
 --- !u!1 &1244158496
 GameObject:
   m_ObjectHideFlags: 0
