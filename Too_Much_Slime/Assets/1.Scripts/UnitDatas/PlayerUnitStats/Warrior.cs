@@ -16,5 +16,16 @@ public class Warrior : PlayerUnitStats
     private void Awake()
     {
         InitData();
+        twistingBlades = GetComponent<TwistingBlades>();
+        followeBirds = GetComponent<FollowBird>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.CompareTag("Skill_Item"))
+        {
+            collision.gameObject.GetComponent<ISkillCard>().SkillCard_LevelUp();
+        }
+
     }
 }

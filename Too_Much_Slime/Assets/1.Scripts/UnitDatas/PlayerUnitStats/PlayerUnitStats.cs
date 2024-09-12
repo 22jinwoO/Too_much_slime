@@ -22,6 +22,10 @@ public abstract class PlayerUnitStats : BaseUnitStats
 
     public float moveSpeed;
 
+    public Transform bladesParent;
+    public Transform birdsParent;
+
+    public SkillBase twistingBlades;
     public SkillBase followeBirds;
 
     public abstract void InitData();
