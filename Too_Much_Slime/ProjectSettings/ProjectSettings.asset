@@ -735,7 +735,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Collab: 0
+    Game Performance: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -749,10 +755,10 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 42ef88d0-9567-4cb4-a39d-979d838a1d20
+  cloudProjectId: 2e839834-83de-4a0f-ac0a-f3a0cf37aadf
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Too_Much_Slime
+  projectName: Too_Much_Slime (1)
   organizationId: jinu123
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
