@@ -40,6 +40,9 @@ public class PlayerAttack : MonoBehaviour
     
     public void OnAttack()
     {
+
+        if (target == null) return;
+
         target.attacker = transform;
 
         target?.Damaged(attackDamage);

@@ -21,8 +21,8 @@ public class UnitDamaged : MonoBehaviour
 
         if (gameObject.CompareTag("Monster") && stats.curHp <= 0)
         {
-            deadEvent.OnDead(stats, attacker);
             attacker.GetComponent<PlayerAttack>().target = null;
+            deadEvent.OnDead(stats, attacker);
         }
         
     }
