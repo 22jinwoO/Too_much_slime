@@ -10,5 +10,7 @@ public abstract class PlayerUnitStats : BaseUnitStats
 
     public float plusMaxHp;
 
+    public float moveSpeed;
+
     public abstract void InitData();
 }
