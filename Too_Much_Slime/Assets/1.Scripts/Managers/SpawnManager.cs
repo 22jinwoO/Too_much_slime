@@ -69,7 +69,6 @@ public class SpawnManager : MonoBehaviour
             }
 
             boardPositionList.Clear();
-            print(randY);
             max_Mons_Ypos += randY;
             count += randY;
         }
