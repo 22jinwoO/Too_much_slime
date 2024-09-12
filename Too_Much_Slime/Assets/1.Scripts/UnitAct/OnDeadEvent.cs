@@ -6,7 +6,7 @@ public class OnDeadEvent : MonoBehaviour
 {
     public void OnDead(BaseUnitStats monster, Transform attacker)
     {
-        transform.GetComponent<BoxCollider2D>().enabled = false;
+        transform.GetComponent<BoxCollider2D>().isTrigger = true;
 
         // 현재 회전 값을 Euler angles로 가져오기
         Vector3 currentRotation = transform.rotation.eulerAngles;
