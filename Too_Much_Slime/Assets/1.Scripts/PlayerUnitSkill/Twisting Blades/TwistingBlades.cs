@@ -12,7 +12,7 @@ public class TwistingBlades: SkillBase
     [SerializeField] List<Blades> bladeList = new List<Blades>();
     private void Awake()
     {
-        distToAway = 1.5f;
+        distToAway = 1f;
 
         skillDamage = 50;
 
@@ -25,7 +25,7 @@ public class TwistingBlades: SkillBase
     }
     private void Update()
     {
-        player.bladesParent.transform.position = player.transform.position;
+        player.bladesParent.transform.position = player.transform.position + new Vector3(0f,0.3f,0f);
         if (bladeList.Count != 0)
         {
             orbitAround();
