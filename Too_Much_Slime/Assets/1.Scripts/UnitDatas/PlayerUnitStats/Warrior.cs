@@ -8,7 +8,7 @@ public class Warrior : PlayerUnitStats
     {
         maxHp = 500;
         curHp = maxHp;
-        atkDmg = 5f;
+        atkDmg = 80f;
         atkSpd = 0.8f;
         moveSpeed = 100f;
     }
