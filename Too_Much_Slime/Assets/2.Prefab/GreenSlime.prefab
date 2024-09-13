@@ -17,13 +17,13 @@ GameObject:
   - component: {fileID: 8958072253924482523}
   - component: {fileID: 8958072253924482502}
   - component: {fileID: 8958072253924482500}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GreenSlime
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8958072253924482498
 Transform:
   m_ObjectHideFlags: 0
