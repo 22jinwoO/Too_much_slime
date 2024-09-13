@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
+
     [SerializeField] private PlayerUnitStats player;
 
     [SerializeField] float max_Mons_Ypos;
@@ -18,17 +20,13 @@ public class SpawnManager : MonoBehaviour
         monsterFactorys = monsterFactoryManager.GetComponentsInChildren<IMonsterFactory>();
 
     }
-    private void Start()
-    {
-        Spawn();
 
-    }
     private void Update()
     {
-        if (max_Mons_Ypos < 200f && player.MaxY > max_Mons_Ypos - 50f) Spawn();
+        if (gameManager.isGameStart&& max_Mons_Ypos < 200f && player.MaxY > max_Mons_Ypos - 50f) Spawn();
     }
 
-    private void Spawn()
+    public void Spawn()
     {
         List<int> boardPositionList = new List<int>();
 
