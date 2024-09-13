@@ -8,6 +8,8 @@ public class PlayerMove : MonoBehaviour, IUnitDoAct
     [SerializeField] private PlayerUnitStats stats;
     [SerializeField] private JoyStick joyStick;
 
+    [SerializeField] private GameManager gameManager;
+
     // 조이스틱으로부터 받은 이동 방향 (X축만)
     private Vector2 movementDirection;
 
@@ -21,7 +23,7 @@ public class PlayerMove : MonoBehaviour, IUnitDoAct
     {
         rigid = GetComponent<Rigidbody2D>();
         stats = GetComponent<PlayerUnitStats>();
-        autoMoveSpeedY = 2f;
+        autoMoveSpeedY = 4f;
         autoMoveSpeedX = 900f;
     }
 
@@ -33,14 +35,22 @@ public class PlayerMove : MonoBehaviour, IUnitDoAct
 
     public void DoAction()
     {
-        // 조이스틱의 x축 방향으로만 이동
-        float moveX = movementDirection.x * autoMoveSpeedX;
+        if(gameManager.isGameStart)
+        {
+            // 조이스틱의 x축 방향으로만 이동
+            float moveX = movementDirection.x * autoMoveSpeedX;
 
-        // y축은 자동으로 이동 (일정한 속도)
-        float moveY = autoMoveSpeedY;
+            // y축은 자동으로 이동 (일정한 속도)
+            float moveY = autoMoveSpeedY;
 
-        // 플레이어의 이동
-        rigid.velocity = new Vector2(moveX, moveY * stats.moveSpeed)  * Time.deltaTime;
+            // 플레이어의 이동
+            rigid.velocity = new Vector2(moveX, moveY * stats.moveSpeed) * Time.deltaTime;
+
+            // 플레이어의 위치를 x축에서 -2에서 2로 제한
+            Vector3 clampedPosition = transform.position;
+            clampedPosition.x = Mathf.Clamp(clampedPosition.x, -2f, 2f);
+            transform.position = clampedPosition;
+        }
     }
 
     public void Exit()

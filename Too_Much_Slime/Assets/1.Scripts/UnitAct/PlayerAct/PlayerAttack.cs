@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private BaseUnitStats stats;
+
     public UnitDamaged target;
 
     [SerializeField] private float curAtkSpd;
@@ -36,6 +37,8 @@ public class PlayerAttack : MonoBehaviour
         if(!canAtk) anim.SetBool(hashAttack, false);
 
         if(target != null && canAtk) anim.SetBool(hashAttack, true);
+
+        if(target == null) anim.SetBool(hashAttack, false);
     }
     
     public void OnAttack()
@@ -53,20 +56,20 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.transform.CompareTag("Monster"))
-        {
-            if (target == null) target = collision.transform.GetComponent<UnitDamaged>();
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if(collision.transform.CompareTag("Monster"))
+    //    {
+            
+    //    }
+    //}
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.transform.CompareTag("Monster"))
-        {
-            anim.SetBool(hashAttack, false);
-            target = null;
-        }
-    }
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.transform.CompareTag("Monster"))
+    //    {
+    //        anim.SetBool(hashAttack, false);
+    //        target = null;
+    //    }
+    //}
 }
