@@ -7,6 +7,14 @@ TagManager:
   - Monster
   - Skill_Item
   - PlayerBullet
+  - MonsterBullet
+  - Coin
+  - Jam
+  - Item
+  - 3Jams
+  - JamShop
+  - Wall
+  - ShopLine
   layers:
   - Default
   - TransparentFX
@@ -15,7 +23,7 @@ TagManager:
   - Water
   - UI
   - Monster
-  - 
+  - Player
   - 
   - 
   - 
