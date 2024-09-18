@@ -17,6 +17,7 @@ public abstract class SkillBase : MonoBehaviour
 
     public float skillMoveSpeed;
 
+    public abstract void InitData();
     public abstract void SetSkill();
     public abstract void SkillStat_LevelUp(cardType type, int cardLevel);
 }
