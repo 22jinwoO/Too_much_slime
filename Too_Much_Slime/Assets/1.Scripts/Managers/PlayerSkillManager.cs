@@ -10,8 +10,7 @@ public class PlayerSkillManager : MonoBehaviour
     [SerializeField]
     private SkillBase[] playerSkills;
 
-    [SerializeField]
-    private ISkillCard[] skillCards;
+    public ISkillCard[] skillCards;
 
     private void Awake()
     {
