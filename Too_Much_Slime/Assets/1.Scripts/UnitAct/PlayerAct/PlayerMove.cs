@@ -35,7 +35,7 @@ public class PlayerMove : MonoBehaviour, IUnitDoAct
 
     public void DoAction()
     {
-        if(gameManager.isGameStart)
+        if (gameManager.isGameStart)
         {
             // 조이스틱의 x축 방향으로만 이동
             float moveX = movementDirection.x * autoMoveSpeedX;
@@ -51,6 +51,8 @@ public class PlayerMove : MonoBehaviour, IUnitDoAct
             clampedPosition.x = Mathf.Clamp(clampedPosition.x, -2f, 2f);
             transform.position = clampedPosition;
         }
+
+        else if (!gameManager.isGameStart) rigid.velocity = Vector2.zero;
     }
 
     public void Exit()
