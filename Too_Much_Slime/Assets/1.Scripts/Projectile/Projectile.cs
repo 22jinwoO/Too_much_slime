@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        Destroy(gameObject, 7f);
     }
 
     // Update is called once per frame
@@ -18,6 +19,7 @@ public class Projectile : MonoBehaviour
     {
         //rigid.AddForce(transform.up * MoveSpeed * Time.deltaTime, ForceMode2D.Impulse);
         if(gameObject.CompareTag("PlayerBullet")) rigid.velocity = Vector2.up * MoveSpeed * Time.deltaTime;
+        if(gameObject.CompareTag("MonsterBullet")) rigid.velocity = Vector2.down * MoveSpeed * Time.deltaTime;
 
         //Debug.LogWarning(rigid.velocity);
     }
@@ -29,7 +31,14 @@ public class Projectile : MonoBehaviour
 
             Destroy(gameObject);
         }
-        
+
+        if (gameObject.CompareTag("MonsterBullet") && collision.gameObject.CompareTag("Player"))
+        {
+            if (collision != null) collision.gameObject.GetComponent<UnitDamaged>().Damaged(attackDmg);
+
+            Destroy(gameObject);
+        }
+
     }
 
     //private void OnCollisionEnter2D(Collision2D collision)
