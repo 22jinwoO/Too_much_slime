@@ -14,6 +14,12 @@ public class FollowBird : SkillBase
 
     private void Awake()
     {
+
+        birdPrefab.followBird = this;
+    }
+
+    public override void InitData()
+    {
         distToAway = 0.5f;
 
         skillDamage = 50;
@@ -22,8 +28,15 @@ public class FollowBird : SkillBase
 
         skillMoveSpeed = 500f;
 
-        birdPrefab.followBird = this;
+        for (int i = 0; i < birdList.Count; ++i)
+        {
+            Destroy(birdList[i].gameObject);
+        }
+
+        birdList.Clear();
+
     }
+
 
     public override void SetSkill()
     {
@@ -88,6 +101,4 @@ public class FollowBird : SkillBase
 
 
     }
-
-
 }
