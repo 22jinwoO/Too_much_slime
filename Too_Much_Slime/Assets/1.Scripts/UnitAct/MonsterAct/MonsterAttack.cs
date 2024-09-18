@@ -31,6 +31,7 @@ public class MonsterAttack : MonoBehaviour
         else canAtk = true;
 
         if (target != null && canAtk) OnAttack();
+
     }
 
     public void OnAttack()

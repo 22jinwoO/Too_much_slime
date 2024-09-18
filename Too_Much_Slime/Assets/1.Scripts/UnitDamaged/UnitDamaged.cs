@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class UnitDamaged : MonoBehaviour
 {
@@ -27,24 +26,49 @@ public class UnitDamaged : MonoBehaviour
 
         stats.curHp -= atkDmg;
 
-        if (gameObject.CompareTag("Monster")) StartCoroutine(nameof(OnHit));
+        if (gameObject.CompareTag("Monster"))
+        {
 
-        if (gameObject.CompareTag("Monster") && stats.curHp <= 0)
+            AudioManager.Instance.audioSource.volume = Random.Range(7.5f, 1f);
+            AudioManager.Instance.audioSource.PlayOneShot(AudioManager.Instance.audioClip[0]);
+            OnMonsterHit();
+            return;
+        }
+        if (gameObject.CompareTag("Player")) OnPlayerHit();
+    }
+
+    private void OnMonsterHit()
+    {
+        StartCoroutine(nameof(OnHit));
+
+        if (stats.curHp <= 0)
         {
             if (attacker != null) attacker.GetComponent<PlayerAttack>().target = null;
-
+            GameManager.Instance.OnDeadAllMonster -= gameObject.GetComponent<MonsterUnitStats>().UnitDead;
             deadEvent.OnDead(stats, attacker);
         }
-        
+
+    }
+    private void OnPlayerHit()
+    {
+        if (stats.curHp <= 0)
+        {
+            deadEvent.OnDead();
+        }
+
     }
 
     IEnumerator OnHit()
     {
-        sprite.color = new Color(0.9f, 0.2f, 0.2f);
+        if(gameObject!=null)
+        {
+            sprite.color = new Color(0.9f, 0.2f, 0.2f);
 
-        yield return new WaitForSecondsRealtime(0.1f);
+            yield return new WaitForSecondsRealtime(0.1f);
 
-        sprite.color = new Color(1f, 1f, 1f);
+            sprite.color = new Color(1f, 1f, 1f);
+        }
+
 
 
     }
