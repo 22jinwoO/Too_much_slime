@@ -10,8 +10,8 @@ public abstract class PlayerUnitStats : BaseUnitStats
         get 
         {
             if (transform.position.y < 0f) return 0f;
-            if (transform.position.y > 250f) return 250f;
-            return (transform.position.y); 
+            if (transform.position.y > 100f) return 1000f;
+            return (transform.position.y * 10f);
         }
     } 
 
@@ -32,6 +32,13 @@ public abstract class PlayerUnitStats : BaseUnitStats
 
     public SkillBase twistingBlades;
     public SkillBase followeBirds;
+
+    [SerializeField]
+    protected Animator anim;
+
+    protected readonly int hashWalk = Animator.StringToHash("isWalk");
+    protected readonly int hashDead = Animator.StringToHash("isDead");
+
 
     public abstract void InitData();
 }
