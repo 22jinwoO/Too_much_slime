@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class OnDeadEvent : MonoBehaviour
 {
+    [SerializeField] private Animator anim;
+    [SerializeField] private GameManager gameManager;
+
+    private readonly int hashDead = Animator.StringToHash("isDead");
+
     public void OnDead(BaseUnitStats monster, Transform attacker)
     {
         transform.GetComponent<BoxCollider2D>().isTrigger = true;
@@ -27,8 +32,11 @@ public class OnDeadEvent : MonoBehaviour
         rigid.AddForce(2500f * transform.up * Time.deltaTime, ForceMode2D.Impulse);
     }
 
-    public void OnDead(PlayerUnitStats player)
+    public void OnDead()
     {
+        anim.SetBool(hashDead, true);
+
+        StartCoroutine(gameManager.GameEnd());
 
     }
 }
