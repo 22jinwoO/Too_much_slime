@@ -26,7 +26,6 @@ public class PlayerRaycast : MonoBehaviour
             // 충돌한 오브젝트의 태그가 "Monster"인지 확인
             if (hit.collider.CompareTag("Monster"))
             {
-                Debug.Log("Monster 감지됨!");
                 if (playerAttack.target == null) playerAttack.target = hit.collider.GetComponent<UnitDamaged>();
             }
         }
