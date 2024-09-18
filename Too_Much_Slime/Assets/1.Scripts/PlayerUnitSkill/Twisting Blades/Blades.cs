@@ -31,12 +31,9 @@ public class Blades : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(gameObject.CompareTag("PlayerBullet"));
-        print(collision.gameObject.CompareTag("Monster"));
         if (gameObject.CompareTag("PlayerBullet") && collision.gameObject.CompareTag("Monster"))
         {
             if (collision != null) collision.gameObject.GetComponent<UnitDamaged>().Damaged(attackDmg);
-            print("몬스터와 충돌");
         }
     }
 }
