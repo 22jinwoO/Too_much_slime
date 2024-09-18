@@ -12,14 +12,8 @@ public class TwistingBlades: SkillBase
     [SerializeField] List<Blades> bladeList = new List<Blades>();
     private void Awake()
     {
-        distToAway = 1f;
 
-        skillDamage = 50;
-
-        skillAtkSpd = 3f;
-
-        skillMoveSpeed = 100f;
-
+        InitData();
         bladePrefab.twistingBlades = this;
 
     }
@@ -34,7 +28,24 @@ public class TwistingBlades: SkillBase
     //
     void orbitAround()
     {
-        player.bladesParent.RotateAround(player.transform.position, Vector3.back, skillMoveSpeed * Time.deltaTime);
+        player.bladesParent.RotateAround(transform.position, Vector3.back, skillMoveSpeed * Time.deltaTime);
+    }
+    public override void InitData()
+    {
+        skillLevel = 0;
+        distToAway = 1f;
+
+        skillDamage = 50;
+
+        skillAtkSpd = 3f;
+
+        skillMoveSpeed = 100f;
+
+        for (int i = 0; i < bladeList.Count; ++i)
+        {
+            Destroy(bladeList[i].gameObject);
+        }
+        bladeList.Clear();
     }
 
     public override void SetSkill()
