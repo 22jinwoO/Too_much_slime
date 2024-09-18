@@ -12,10 +12,9 @@ public enum unitState
 
 public enum cardType
 {
-    Default = 0,
-    Fire = 1,
-    Ice = 2,
+    Fire = 0,
+    Ice = 1,
+    Wind = 2,
     Ground = 3,
-    Wind = 4,
     End = Wind + 1
 }
