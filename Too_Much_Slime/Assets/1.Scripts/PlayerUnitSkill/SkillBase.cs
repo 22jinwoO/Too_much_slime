@@ -5,8 +5,10 @@ using System;
 
 public abstract class SkillBase : MonoBehaviour
 {
+    // 플레이어 오브젝트
     public PlayerUnitStats player;
 
+    // 이펙트 오브젝트
     [SerializeField] protected GameObject vfx;
 
     public int skillLevel;
@@ -17,7 +19,10 @@ public abstract class SkillBase : MonoBehaviour
 
     public float skillMoveSpeed;
 
+    // 스킬 레벨업시 호출되는 Action
+    public Action<cardType, int> onSkillStat_LevelUp;
+
     public abstract void InitData();
-    public abstract void SetSkill();
-    public abstract void SkillStat_LevelUp(cardType type, int cardLevel);
+    protected abstract void SetSkill();
+    protected abstract void SkillStat_LevelUp(cardType type, int cardLevel);
 }
