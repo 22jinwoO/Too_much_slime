@@ -176,8 +176,11 @@ MonoBehaviour:
   lobbyCanvas: {fileID: 1281284013}
   player: {fileID: 312007659}
   maxDistance_Gage: {fileID: 1578799679}
+  stageNumTxt: {fileID: 1111052736}
+  maxDistanceTxt: {fileID: 1375271827}
   player_MaxdistanceTxt: {fileID: 569060137}
   golobbynBtn: {fileID: 1834041191}
+  isFinish: 0
 --- !u!1 &43545450
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +468,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82854435}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -485,13 +488,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293626beccec61c4a972987836eedee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleValues: []
-  skillContentValues: []
   atrributeImgs:
   - {fileID: 21300000, guid: 81d4dcdaa3488ee4fb4b31fd108d040e, type: 3}
   - {fileID: -2145119080, guid: fce28c1333759044096b38a7b206b4a2, type: 3}
   - {fileID: 21300000, guid: 23ab03b2cf7944f4193fd30cd00a2a06, type: 3}
   sKillImgs: {fileID: 21300000, guid: b80cc2344c629cc498882893de4cd3ec, type: 3}
+  thisSkill: {fileID: 0}
   needJamCnt: 
   <Skill_Type>k__BackingField: 1
 --- !u!1 &114398566
@@ -525,6 +527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 312007659}
   playerSkills: []
+  skillCards: []
 --- !u!4 &114398568
 Transform:
   m_ObjectHideFlags: 0
@@ -729,7 +732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &165524799
 Rigidbody2D:
   serializedVersion: 4
@@ -1052,12 +1055,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b62b21c186c7f46887946cbc1101c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillCard: {fileID: 0}
   skillAttribute: {fileID: 940303859}
   skillImg: {fileID: 1962085495}
   titleTxt: {fileID: 1138923518}
   contentTxt: {fileID: 74184696}
   jamCntTxt: {fileID: 431893558}
   mySlotBtn: {fileID: 0}
+--- !u!1 &205565054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 205565055}
+  - component: {fileID: 205565056}
+  m_Layer: 0
+  m_Name: ScreenManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &205565055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205565054}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1210145117}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &205565056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205565054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb453ac4079e7240a0b239718818707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 519420031}
 --- !u!1 &217587027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,13 +1228,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293626beccec61c4a972987836eedee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleValues: []
-  skillContentValues: []
   atrributeImgs:
   - {fileID: 21300000, guid: 81d4dcdaa3488ee4fb4b31fd108d040e, type: 3}
   - {fileID: -2145119080, guid: fce28c1333759044096b38a7b206b4a2, type: 3}
   - {fileID: 21300000, guid: 23ab03b2cf7944f4193fd30cd00a2a06, type: 3}
   sKillImgs: {fileID: 21300000, guid: b80cc2344c629cc498882893de4cd3ec, type: 3}
+  thisSkill: {fileID: 0}
   needJamCnt: 
   <Skill_Type>k__BackingField: 2
 --- !u!1 &244603058
@@ -1968,7 +2016,7 @@ RectTransform:
   - {fileID: 1834041187}
   - {fileID: 370176859}
   m_Father: {fileID: 1859121123}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3082,6 +3130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b62b21c186c7f46887946cbc1101c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillCard: {fileID: 0}
   skillAttribute: {fileID: 2000647030}
   skillImg: {fileID: 1390059114}
   titleTxt: {fileID: 2132104728}
@@ -3584,6 +3633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b62b21c186c7f46887946cbc1101c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillCard: {fileID: 0}
   skillAttribute: {fileID: 1732583106}
   skillImg: {fileID: 999191089}
   titleTxt: {fileID: 686584827}
@@ -3761,8 +3811,7 @@ MonoBehaviour:
   - {fileID: -2145119080, guid: fce28c1333759044096b38a7b206b4a2, type: 3}
   - {fileID: 21300000, guid: 23ab03b2cf7944f4193fd30cd00a2a06, type: 3}
   sKillImgs: {fileID: 21300000, guid: f0d58a29f110cc444baca45e261e4cd2, type: 3}
-  titleValues: []
-  skillContentValues: []
+  thisSkill: {fileID: 0}
   needJamCnt: 
   <Skill_Type>k__BackingField: 1
 --- !u!1 &633446442
@@ -3809,13 +3858,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293626beccec61c4a972987836eedee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleValues: []
-  skillContentValues: []
   atrributeImgs:
   - {fileID: 21300000, guid: 81d4dcdaa3488ee4fb4b31fd108d040e, type: 3}
   - {fileID: -2145119080, guid: fce28c1333759044096b38a7b206b4a2, type: 3}
   - {fileID: 21300000, guid: 23ab03b2cf7944f4193fd30cd00a2a06, type: 3}
   sKillImgs: {fileID: 21300000, guid: b80cc2344c629cc498882893de4cd3ec, type: 3}
+  thisSkill: {fileID: 0}
   needJamCnt: 
   <Skill_Type>k__BackingField: 0
 --- !u!1 &647383545
@@ -4542,7 +4590,7 @@ RectTransform:
   - {fileID: 1281495670}
   - {fileID: 970728131}
   m_Father: {fileID: 1859121123}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -36926,6 +36974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b62b21c186c7f46887946cbc1101c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillCard: {fileID: 0}
   skillAttribute: {fileID: 1145810795}
   skillImg: {fileID: 1835909103}
   titleTxt: {fileID: 459386128}
@@ -37125,6 +37174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b62b21c186c7f46887946cbc1101c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillCard: {fileID: 0}
   skillAttribute: {fileID: 1940859572}
   skillImg: {fileID: 134145038}
   titleTxt: {fileID: 1261081160}
@@ -38445,6 +38495,7 @@ MonoBehaviour:
   PopUp: {fileID: 1572152039}
   popUpYesBtn: {fileID: 1358540105}
   popUpNoBtn: {fileID: 647383549}
+  slotBtn: {fileID: 0}
 --- !u!1 &1210145116
 GameObject:
   m_ObjectHideFlags: 0
@@ -38483,6 +38534,7 @@ Transform:
   - {fileID: 1046706094}
   - {fileID: 534248774}
   - {fileID: 1432329003}
+  - {fileID: 205565055}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38535,8 +38587,7 @@ MonoBehaviour:
   - {fileID: -2145119080, guid: fce28c1333759044096b38a7b206b4a2, type: 3}
   - {fileID: 21300000, guid: 23ab03b2cf7944f4193fd30cd00a2a06, type: 3}
   sKillImgs: {fileID: 21300000, guid: f0d58a29f110cc444baca45e261e4cd2, type: 3}
-  titleValues: []
-  skillContentValues: []
+  thisSkill: {fileID: 0}
   needJamCnt: 
   <Skill_Type>k__BackingField: 0
 --- !u!1 &1244158496
@@ -38885,12 +38936,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -38905,8 +38956,8 @@ Canvas:
   m_GameObject: {fileID: 1281284013}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -38915,7 +38966,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1281284017
 RectTransform:
@@ -39027,6 +39078,7 @@ GameObject:
   - component: {fileID: 1320717546}
   - component: {fileID: 1320717545}
   - component: {fileID: 1320717547}
+  - component: {fileID: 1320717548}
   m_Layer: 0
   m_Name: DeadZone
   m_TagString: Untagged
@@ -39087,6 +39139,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c69bcf45a6e92847af6f4a41a7e7c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &1320717548
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320717544}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1327466551
 GameObject:
   m_ObjectHideFlags: 0
@@ -41290,7 +41363,7 @@ RectTransform:
   - {fileID: 1843390529}
   - {fileID: 1572152040}
   m_Father: {fileID: 1859121123}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -41356,7 +41429,13 @@ MonoBehaviour:
   - {fileID: 1032236580}
   - {fileID: 1790514438}
   - {fileID: 1012504592}
-  slotBtn: {fileID: 0}
+  slotBtns:
+  - {fileID: 196033019}
+  - {fileID: 605823426}
+  - {fileID: 537115464}
+  - {fileID: 1032236579}
+  - {fileID: 1790514437}
+  - {fileID: 1012504591}
 --- !u!1 &1732583104
 GameObject:
   m_ObjectHideFlags: 0
@@ -41740,6 +41819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b62b21c186c7f46887946cbc1101c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillCard: {fileID: 0}
   skillAttribute: {fileID: 217587029}
   skillImg: {fileID: 1360487637}
   titleTxt: {fileID: 1536213431}
@@ -42188,12 +42268,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -42208,8 +42288,8 @@ Canvas:
   m_GameObject: {fileID: 1859121119}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -42218,7 +42298,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1859121123
 RectTransform:
@@ -42234,9 +42314,9 @@ RectTransform:
   m_Children:
   - {fileID: 1247415432}
   - {fileID: 2107258254}
-  - {fileID: 329840690}
   - {fileID: 1707196722}
   - {fileID: 819292594}
+  - {fileID: 329840690}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43429,7 +43509,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 250m
+  m_text: 0m
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d9c48cce1ee5e7f42ae995e2e5632c0b, type: 2}
   m_sharedMaterial: {fileID: 8788483372568729440, guid: d9c48cce1ee5e7f42ae995e2e5632c0b, type: 2}
@@ -43555,8 +43635,7 @@ MonoBehaviour:
   - {fileID: -2145119080, guid: fce28c1333759044096b38a7b206b4a2, type: 3}
   - {fileID: 21300000, guid: 23ab03b2cf7944f4193fd30cd00a2a06, type: 3}
   sKillImgs: {fileID: 21300000, guid: f0d58a29f110cc444baca45e261e4cd2, type: 3}
-  titleValues: []
-  skillContentValues: []
+  thisSkill: {fileID: 0}
   needJamCnt: 
   <Skill_Type>k__BackingField: 2
 --- !u!1 &2132104726
