@@ -55,7 +55,7 @@ public class GreenKingSlimeSkill : MonoBehaviour, IBossSkill
     public void InitData()
     {
         respawnPoints = new int[] { -2, -1, 0, 1, 2 };
-        greenJellyDmg = 20f;
+        greenJellyDmg = 10f;
         greenJellySpd = 500f;
         greenJelly.attackDmg = stats.atkDmg += greenJellyDmg;
         greenJelly.MoveSpeed = greenJellySpd;
