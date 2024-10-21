@@ -7,7 +7,10 @@ public class OnFinishEvent : MonoBehaviour
     [SerializeField] private ResultManager resultManager;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        resultManager.isFinish = true;
-        if (collision.CompareTag("Player")) StartCoroutine(resultManager.OnResultPopUp());
+        if(collision.CompareTag("Player"))
+        {
+            resultManager.isFinish = true;
+            StartCoroutine(resultManager.OnResultPopUp());
+        }
     }
 }
