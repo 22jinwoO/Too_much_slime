@@ -21,7 +21,7 @@ public class ResultManager : MonoBehaviour
     [SerializeField] private PlayerUnitStats player;
 
     [SerializeField] private Image maxDistance_Gage;
-    [SerializeField] private TextMeshProUGUI player_MaxdistanceTxt;
+    [SerializeField] private TextMeshProUGUI stageNumTxt, maxDistanceTxt, player_MaxdistanceTxt;
 
     [SerializeField] private Button golobbynBtn;
 
@@ -35,6 +35,11 @@ public class ResultManager : MonoBehaviour
 
     public IEnumerator OnResultPopUp()
     {
+        maxDistance_Gage.fillAmount = 0f;
+        player.moveSpeed = 0f;
+
+        maxDistanceTxt.text = $"{StageManager.Instance.stageNum * 1000f}m";
+
         resultPopUp.SetActive(true);
 
         yield return null;
@@ -42,15 +47,27 @@ public class ResultManager : MonoBehaviour
         // 플레이어의 MaxY를 기준으로 maxDistance_Gage의 fillAmount 조정
         float value = 0f;
 
-        // 0부터 player.MaxY까지 1씩 증가
-        while (value < player.MaxY)
+        float increment = 10f;
+
+        float playerMaxValue = player.MaxY;
+
+        if(playerMaxValue >= 1000f) playerMaxValue -= (StageManager.Instance.stageNum - 1) * 1000;
+
+        // 0부터 playerMaxValue까지 10씩 증가
+        while (value < playerMaxValue)
         {
+            // player.MaxY에 가까워지면 증가량을 1로 줄임
+            if (increment != 1f && player.MaxY - increment < 10f) increment = 1f;  // 더 세밀하게 증가
+
+            value += increment;
+
             maxDistance_Gage.fillAmount = value / 1000f;
-            value += 1;
-            yield return null;
+
+            yield return new WaitForSeconds(0.01f);
         }
 
         yield return new WaitForSecondsRealtime(0.2f);
+
         print(Mathf.RoundToInt(player.MaxY));
         player_MaxdistanceTxt.text = $"{Mathf.RoundToInt(player.MaxY)}m";
         maxDistanceResult.gameObject.SetActive(true);
@@ -63,15 +80,18 @@ public class ResultManager : MonoBehaviour
 
     public IEnumerator GoLobby()
     {
-        lobbyCanvas.SetActive(true);
+        player.InitData();
 
-        yield return null;
+        stageNumTxt.gameObject.SetActive(false);
+
+        lobbyCanvas.SetActive(true);
 
         StartCoroutine(fadeInOutManager.FadeInFadeOut(false));
 
         yield return new WaitForSecondsRealtime(2f);
 
         resultPopUp.SetActive(false);
+        maxDistanceResult.gameObject.SetActive(false);
 
         inGameCanvas.SetActive(false);
 
@@ -92,6 +112,10 @@ public class ResultManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         isFinish = false;
         StartCoroutine(fadeInOutManager.FadeInFadeOut(true));
+
+        stageNumTxt.gameObject.SetActive(true);
+
+        yield return null;
 
         gameManager.gameStartBtn.gameObject.SetActive(true);
 
