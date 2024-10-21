@@ -10,18 +10,18 @@ public class PlayerSkillManager : MonoBehaviour
     [SerializeField]
     private SkillBase[] playerSkills;
 
-    public ISkillCard[] skillCards;
+    public SkillCardBase[] skillCards;
 
     private void Awake()
     {
-        playerSkills = GetComponentsInChildren<SkillBase>();
+        playerSkills = player.GetComponents<SkillBase>();
 
-        skillCards = GetComponentsInChildren<ISkillCard>();
+        skillCards = GetComponentsInChildren<SkillCardBase>();
 
         for (int i = 0; i < playerSkills.Length; i++)
             playerSkills[i].player = player;
 
         for (int i = 0; i < skillCards.Length; i++)
-            skillCards[i].Player = player;
+            skillCards[i].Player = player;        
     }
 }
