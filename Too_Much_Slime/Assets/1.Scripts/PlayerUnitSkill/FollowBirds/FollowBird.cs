@@ -5,17 +5,21 @@ using UnityEngine;
 
 public class FollowBird : SkillBase
 {
-    [SerializeField]
-    private float distToAway;
+    // 오브젝트 간의 거리
+    [SerializeField] private float distToAway;
 
+    // 새 유닛 프리팹
     [SerializeField] private Bird birdPrefab;
 
+    // 추가된 새 유닛들의 리스트
     [SerializeField] List<Bird> birdList = new List<Bird>();
 
     private void Awake()
     {
+        birdPrefab.followBird = this; 
 
-        birdPrefab.followBird = this;
+        //Action 연결
+        onSkillStat_LevelUp = SkillStat_LevelUp;
     }
 
     public override void InitData()
@@ -33,28 +37,32 @@ public class FollowBird : SkillBase
             Destroy(birdList[i].gameObject);
         }
 
+        // 리스트 초기화
         birdList.Clear();
-
     }
 
 
-    public override void SetSkill()
+    protected override void SetSkill()
     {
-        // 유닛 뒤로 가로로 정렬되는 코드
-        float startX = player.transform.position.x - (birdList.Count - 1) * 0.5f * distToAway; // 시작 X 좌표 계산
+        // 유닛 뒤로 가로로 정렬되는 코드, 시작 X 좌표 계산
+        float startX = player.transform.position.x - (birdList.Count - 1) * 0.5f * distToAway; // 
 
-        // Y 좌표를 target.position.y 기준으로 -2
+        // Y 좌표를 target.position.y 기준으로 -0.5ㄹ
         float y = player.transform.position.y - 0.5f; 
 
         for (int i = 0; i < birdList.Count; ++i)
         {
             birdList[i].transform.SetParent(player.birdsParent);
-            float x = startX + i * distToAway; // 각 유닛의 X 좌표 계산
-            birdList[i].MoveTo(new Vector3(x, y, 0)); // Z축은 2D이므로 0으로 설정
+
+            // 각 유닛의 X 좌표 계산
+            float x = startX + i * distToAway;
+
+            // Z축은 2D이므로 0으로 설정
+            birdList[i].MoveTo(new Vector3(x, y, 0)); 
         }
     }
 
-    public override void SkillStat_LevelUp(cardType type, int cardLevel)
+    protected override void SkillStat_LevelUp(cardType type, int cardLevel)
     {
         skillLevel++;
 
@@ -68,35 +76,38 @@ public class FollowBird : SkillBase
 
         switch (type)
         {
-                case cardType.Fire:
-                    skillDamage = skillDamage + skillDamage * 0.3f;
-                    for (int i = 0; i < cardLevel; ++i)
-                    {
-                        birdPrefab.InitData();
-                    }
-                    break;
+            // 불속성 카드
+            case cardType.Fire:
+                skillDamage = skillDamage + skillDamage * 0.3f;
+                for (int i = 0; i < cardLevel; ++i)
+                {
+                    birdPrefab.InitData();
+                }
+                break;
 
+            // 냉기 속성 카드
             case cardType.Ice:
+                birdList.Add(Instantiate(birdPrefab));
+                SetSkill();
+                for (int i = 0; i < cardLevel; ++i)
+                {
+                    birdPrefab.InitData();
+                }
+                break;
 
-                    birdList.Add(Instantiate(birdPrefab));
-                    SetSkill();
-                    for (int i = 0; i < cardLevel; ++i)
-                    {
-                        birdPrefab.InitData();
-                    }
-                    break;
+            // 대지 속성 카드
+            case cardType.Ground:
 
-                case cardType.Ground:
-                    
-                    break;
+                break;
 
-                case cardType.Wind:
-                    skillAtkSpd = skillAtkSpd - skillAtkSpd * 0.3f;
-                    for (int i = 0; i < cardLevel; ++i)
-                    {
-                        birdPrefab.InitData();
-                    }
-                    break;
+            // 바람 속성 카드
+            case cardType.Wind:
+                skillAtkSpd = skillAtkSpd - skillAtkSpd * 0.3f;
+                for (int i = 0; i < cardLevel; ++i)
+                {
+                    birdPrefab.InitData();
+                }
+                break;
         }
 
 
