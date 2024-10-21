@@ -21,8 +21,8 @@ public class GreenSlimeKing : MonsterUnitStats
         monsterAttack = GetComponent<MonsterAttack>();
         unitDamaged = GetComponent<UnitDamaged>();
 
-        standard_MaxHp = 3000f;
-        standard_atkDmg = 15f;
+        standard_MaxHp = 1500f;
+        standard_atkDmg = 5f;
         maxHp = standard_MaxHp;
         atkDmg = standard_atkDmg;
         InitData(StageManager.Instance.stageNum);
@@ -36,6 +36,8 @@ public class GreenSlimeKing : MonsterUnitStats
     }
     public override void InitData(int currentStage)
     {
+        boxCol.enabled = true;
+
         monsterAttack.target = null;
 
         rigid.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -49,7 +51,7 @@ public class GreenSlimeKing : MonsterUnitStats
         // 보스 몬스터 일 경우 - 스테이지 단계 N 당 몬스터 공격력, 체력 N * 10%씩 강화
         maxHp = standard_MaxHp * (1 + currentStage * 0.1f);
         curHp = maxHp;
-        atkDmg = standard_atkDmg * (1 + currentStage * 0.1f);
+        atkDmg = standard_atkDmg * (1 + currentStage * 0.7f);
         atkSpd = 1.5f;
     }
 
