@@ -18,9 +18,12 @@ public class Warrior : PlayerUnitStats
         curHp = maxHp;
         atkDmg = 80f;
         atkSpd = 0.8f;
-        moveSpeed = 150f;
+        moveSpeed = 50f;
 
         anim.SetBool(hashDead, false);
+
+        PlayerJamManager.Instance.playerJamCnt = 0;
+        PlayerJamManager.Instance.jamCntTxt.text = PlayerJamManager.Instance.playerJamCnt.ToString();
 
         twistingBlades.InitData();
         followeBirds.InitData();
@@ -49,10 +52,6 @@ public class Warrior : PlayerUnitStats
                 int jamCnt = 1;
                 PlayerJamManager.Instance.GetJam(jamCnt);
                 Destroy(collision.gameObject);
-                break;
-
-            case "Skill_Item":
-                collision.gameObject.GetComponent<ISkillCard>().SkillCard_LevelUp();
                 break;
 
             case "JamShop":
