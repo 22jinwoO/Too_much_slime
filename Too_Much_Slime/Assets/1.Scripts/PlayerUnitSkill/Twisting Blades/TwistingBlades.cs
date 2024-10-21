@@ -16,6 +16,7 @@ public class TwistingBlades: SkillBase
         InitData();
         bladePrefab.twistingBlades = this;
 
+        onSkillStat_LevelUp = SkillStat_LevelUp;
     }
     private void Update()
     {
@@ -48,7 +49,7 @@ public class TwistingBlades: SkillBase
         bladeList.Clear();
     }
 
-    public override void SetSkill()
+    protected override void SetSkill()
     {
         for (int i = 0; i < bladeList.Count; ++i)
         {
@@ -62,7 +63,7 @@ public class TwistingBlades: SkillBase
         }
     }
 
-    public override void SkillStat_LevelUp(cardType type, int cardLevel)
+    protected override void SkillStat_LevelUp(cardType type, int cardLevel)
     {
         skillLevel++;
 
