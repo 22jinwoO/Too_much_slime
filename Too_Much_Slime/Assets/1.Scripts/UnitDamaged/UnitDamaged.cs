@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UnitDamaged : MonoBehaviour
 {
     [SerializeField] BaseUnitStats stats;
+
     public Transform attacker;
 
     [SerializeField] private OnDeadEvent deadEvent;
@@ -22,7 +23,7 @@ public class UnitDamaged : MonoBehaviour
 
     public void Damaged(float atkDmg)
     {
-        if (stats.curHp <= 0f) return;
+        if (Mathf.RoundToInt(stats.curHp) <= 0f) return;
 
         stats.curHp -= atkDmg;
 
@@ -41,8 +42,9 @@ public class UnitDamaged : MonoBehaviour
     {
         StartCoroutine(nameof(OnHit));
 
-        if (stats.curHp <= 0)
+        if (Mathf.RoundToInt(stats.curHp) <= 0)
         {
+            GetComponent<BoxCollider2D>().enabled = false;
             if (attacker != null) attacker.GetComponent<PlayerAttack>().target = null;
             GameManager.Instance.OnDeadAllMonster -= gameObject.GetComponent<MonsterUnitStats>().UnitDead;
             deadEvent.OnDead(stats, attacker);
@@ -51,7 +53,7 @@ public class UnitDamaged : MonoBehaviour
     }
     private void OnPlayerHit()
     {
-        if (stats.curHp <= 0)
+        if (Mathf.RoundToInt(stats.curHp) <= 0)
         {
             deadEvent.OnDead();
         }
