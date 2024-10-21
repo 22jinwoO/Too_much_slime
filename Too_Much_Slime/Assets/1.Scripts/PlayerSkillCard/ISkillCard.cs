@@ -15,6 +15,4 @@ public interface ISkillCard
 
     public int CardLevel{ get; set;}
     public int NeedJam { get; set;}
-
-    public void SkillCard_LevelUp();
 }
