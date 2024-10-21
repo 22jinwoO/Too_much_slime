@@ -9,9 +9,21 @@ public abstract class PlayerUnitStats : BaseUnitStats
     {
         get 
         {
-            if (transform.position.y < 0f) return 0f;
-            if (transform.position.y > 100f) return 1000f;
-            return (transform.position.y * 10f);
+            int playerArrivePoint = StageManager.Instance.stageNum - 1;
+
+            // 플레이어가 도착지점을 지나 쳤을 때
+            if (playerArrivePoint * 1000 + transform.position.y * 10f > StageManager.Instance.stageNum * 1000) return StageManager.Instance.stageNum * 1000;
+
+            // 플레이어가 첫 스테이지를 시작하고 스타트 포인트를 안지나쳤을 때
+            if (transform.position.y < 0f && StageManager.Instance.stageNum == 1) return 0f;
+
+            // 플레이어가 첫 스테이지를 시작하고 스타트 포인트를 지나쳤을 때
+            if (StageManager.Instance.stageNum == 1) return transform.position.y * 10f;
+
+            // 플레이어가 첫 스테이지 이후 게임을 시작할 때
+            if (transform.position.y < 0f && StageManager.Instance.stageNum != 1) return playerArrivePoint * 1000;
+            
+            return (playerArrivePoint * 1000 + transform.position.y * 10f);
         }
     } 
 
