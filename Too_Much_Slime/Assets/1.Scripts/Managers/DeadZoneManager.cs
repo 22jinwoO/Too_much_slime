@@ -31,17 +31,4 @@ public class DeadZoneManager : MonoBehaviour
                 break;
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        switch (collision.transform.tag)
-        {
-
-            case "Wall":
-
-                Destroy(collision.gameObject);
-                break;
-
-        }
-    }
 }
