@@ -6,7 +6,7 @@ using TMPro;
 
 public class Slot : MonoBehaviour
 {
-    public ISkillCard skillCard;
+    public SkillCardBase skillCard;
     public Image skillAttribute;
     public Image skillImg;
 
@@ -22,7 +22,7 @@ public class Slot : MonoBehaviour
 
         mySlotBtn.onClick.AddListener(() =>
         {
-            PopUpSystem.Instance.OpenPopUp(skillCard.SkillCard_LevelUp, null);
+            PopUpSystem.Instance.OpenPopUp(skillCard.LevelUpAction, null , mySlotBtn);
         });
     }
 }
