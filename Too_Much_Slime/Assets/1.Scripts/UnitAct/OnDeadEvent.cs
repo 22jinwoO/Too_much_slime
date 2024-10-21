@@ -29,7 +29,7 @@ public class OnDeadEvent : MonoBehaviour
         rigid.gravityScale = 2f;
 
         // 힘을 줌 (임펄스 모드)
-        rigid.AddForce(2500f * transform.up * Time.deltaTime, ForceMode2D.Impulse);
+        rigid.AddForce(300f * transform.up * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     public void OnDead()
