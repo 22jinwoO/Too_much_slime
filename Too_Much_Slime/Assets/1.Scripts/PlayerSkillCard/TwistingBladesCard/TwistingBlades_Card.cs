@@ -3,42 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TwistingBlades_Card : MonoBehaviour, ISkillCard
+public class TwistingBlades_Card : SkillCardBase
 {
-    public PlayerUnitStats Player { get; set; }
-
-    public Sprite[] atrributeImgs;
-
-    public Sprite sKillImgs;
-    public Sprite AtrributeImg { get => atrributeImgs[(int)Skill_Type]; set { } }
-    public Sprite SKillImg { get => sKillImgs; set { } }
-    public int NeedJam { get => needJamCnt[(int)Skill_Type]; set { } }
-
-    private int cardLevel;
-
-    public string[] titleValues;
-
-    public string[] skillContentValues;
-
-    public int[] needJamCnt;
-
-    public string TitleValue
+    protected override void InitializeValues()
     {
-        get => titleValues[(int)Skill_Type]; set { }
-    }
+        thisSkill = Player.GetComponent<TwistingBlades>();
 
-    public string SkillContentValue
-    {
-        get => skillContentValues[(int)Skill_Type]; set { }
-    }
-
-    public int CardLevel { get => cardLevel; set => value = cardLevel; }
-
-    [field: SerializeField]
-    public cardType Skill_Type { get; set; }
-
-    private void Awake()
-    {
         titleValues = new string[3];
 
         skillContentValues = new string[3];
@@ -58,17 +28,5 @@ public class TwistingBlades_Card : MonoBehaviour, ISkillCard
         needJamCnt[2] = 8;
 
         print($"{gameObject.name}, {TitleValue}, {SkillContentValue}");
-    }
-
-    public void SkillCard_LevelUp()
-    {
-        if (PlayerJamManager.Instance.playerJamCnt < NeedJam) return;
-
-        PlayerJamManager.Instance.playerJamCnt -= NeedJam;
-        PlayerJamManager.Instance.jamCntTxt.text = PlayerJamManager.Instance.playerJamCnt.ToString();
-
-        cardLevel++;
-
-        Player.twistingBlades.SkillStat_LevelUp(Skill_Type, cardLevel);
     }
 }
