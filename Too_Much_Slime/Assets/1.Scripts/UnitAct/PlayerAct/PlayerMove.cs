@@ -23,13 +23,13 @@ public class PlayerMove : MonoBehaviour, IUnitDoAct
     {
         rigid = GetComponent<Rigidbody2D>();
         stats = GetComponent<PlayerUnitStats>();
-        autoMoveSpeedY = 4f;
-        autoMoveSpeedX = 900f;
+        autoMoveSpeedY = 2f;
+        autoMoveSpeedX = 100f;
     }
 
     public void Enter()
     {
-        joyStick.OnMoveInput += OnMovementInput;
+        joyStick.OnMoveInput = OnMovementInput;
 
     }
 
