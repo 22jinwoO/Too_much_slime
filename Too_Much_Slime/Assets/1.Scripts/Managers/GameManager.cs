@@ -66,8 +66,5 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(resultManager.OnResultPopUp());
 
         yield return new WaitForSecondsRealtime(2f);
-
-        player.InitData();
-
     }
 }
