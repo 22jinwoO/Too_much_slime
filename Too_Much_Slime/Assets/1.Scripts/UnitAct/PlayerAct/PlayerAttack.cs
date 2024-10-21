@@ -53,6 +53,8 @@ public class PlayerAttack : MonoBehaviour
         curAtkSpd = 0f;
 
         canAtk = false;
+
+        target = null;
     }
 
 
