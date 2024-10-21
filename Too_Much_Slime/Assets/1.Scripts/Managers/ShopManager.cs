@@ -18,6 +18,8 @@ public class ShopManager : MonoBehaviour
 
     public void OnReload()
     {
+        if (PlayerJamManager.Instance.playerJamCnt < 2) return;
+
         shop.SetSkillCards();
         PlayerJamManager.Instance.playerJamCnt -= 2;
         PlayerJamManager.Instance.jamCntTxt.text = PlayerJamManager.Instance.playerJamCnt.ToString();
@@ -30,6 +32,7 @@ public class ShopManager : MonoBehaviour
     }
     public void ShopOpen()
     {
+        shop.SetSkillCards();
         shop.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
