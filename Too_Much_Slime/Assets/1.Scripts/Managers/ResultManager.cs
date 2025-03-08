@@ -80,6 +80,8 @@ public class ResultManager : MonoBehaviour
 
     public IEnumerator GoLobby()
     {
+        golobbynBtn.gameObject.SetActive(false);
+
         player.InitData();
 
         stageNumTxt.gameObject.SetActive(false);

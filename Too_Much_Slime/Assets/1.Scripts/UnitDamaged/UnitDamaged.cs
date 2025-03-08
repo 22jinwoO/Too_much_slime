@@ -25,7 +25,8 @@ public class UnitDamaged : MonoBehaviour
     {
         if (Mathf.RoundToInt(stats.curHp) <= 0f) return;
 
-        stats.curHp -= atkDmg;
+        // atkDmg 만큼 curHp에서 뺀 뒤, 0 이하로 떨어지지 않도록 제한
+        stats.curHp = Mathf.Clamp(stats.curHp - atkDmg, 0, stats.curHp);
 
         if (gameObject.CompareTag("Monster"))
         {

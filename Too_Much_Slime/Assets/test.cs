@@ -15,5 +15,17 @@ public class test : MonoBehaviour
     void Update()
     {
         rb.AddForce(transform.up,ForceMode2D.Impulse);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            print("키보드 눌림");
+            Time.timeScale = 0;
+            
+        }
+
+        
+
+        if (Input.GetKeyDown(KeyCode.S))
+            Time.timeScale = 1;
     }
 }
